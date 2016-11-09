@@ -2,23 +2,20 @@
 
 v0.1.0
 
+##程序说明
+
 页面说明：
-* 首页列表 index.php
-* 文章内容 article.php
-* 后台文章列表管理 admin.php
-* 删除文章 admin_del.php
-* 编辑文章 admin_edit.php
-* 新增文章 admin_create.php
+* index.php 首页列表 
+* article.php 文章内容 
+* admin.php 后台文章列表管理 
+* admin_edit.php 编辑、新增文章
 
-特性：
-* 只实现了前端部分
-* 用include实现了前端代码重用
+公用页面：
+* header.php 页头
+* footer.php 页尾
+* nav.php 管理后台的菜单
+* data.php 伪数据
 
-todo：
+##todo
 * 视图和逻辑分离
 * 使用文件作为内存存储
-* 实现注册、登录
-* 增加权限控制
-* 增加数据库支持
-* 实现路由和控制器
-* 实现orm
