@@ -1,27 +1,34 @@
-<?php include 'header.php';?>
-    <div class="row">
-        <?php include 'nav.php';?>
-        <div class="col-md-8">
-            <form action="admin-save.php" method="post">
-                <div class="form-group">
-                    <label for="article_title">文章标题：</label>
-                    <input type="text" class="form-control" id="article_title" name="title" placeholder="文章标题"
-                         value="<?php echo $render['article']['title']; ?>">
-                </div>
-                <div class="form-group">
-                    <label for="article_content">正文内容：</label>
-                    <textarea class="form-control" id="article_content" name="content" placeholder="正文内容"
-                        style="height:300px;"><?php echo $render['article']['content']; ?></textarea>
-                </div>
-                <?php if (isset($render['article']['created'])): ?>
-                    <input type="hidden" name="created" value="<?php echo $render['article']['created']; ?>" />
-                <?php endif?>
-                <?php if (isset($render['article']['id'])): ?>
-                    <input type="hidden" name="id" value="<?php echo $render['article']['id']; ?>" />
-                <?php endif?>
-                <button type="submit" class="btn btn-default">提交</button>
-            </form>
-        </div>
-    </div>
+<?php
+/**
+ * 后台新增或编辑页面
+ */
+include 'boot.php';
 
-<?php include 'footer.php';?>
+//定义菜单激活变量
+$render['active'] = 'edit';
+
+//初始化视图变量，避免视图中出现undifined错误
+$render['article'] = [
+    'title' => '',
+    'content' => '',
+];
+
+//如果有$_GET['id']，说明是编辑已有文章
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    //构建数据文件名
+    $fileName = DATA_PATH . '/' . $id . '.php';
+
+    //判断数据文件是否存在
+    if (file_exists($fileName)) {
+
+        //从文件中取出数据
+        $data = file_get_contents($fileName);
+
+        //将数据反序列化为数组，赋值给视图变量
+        $render['article'] = unserialize($data);
+    }
+}
+
+view($render);

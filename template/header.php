@@ -1,12 +1,11 @@
-<?php include 'data.php';?>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>博客系统</title>
 
-    <link rel="stylesheet" href="src/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="<?php echo SRC_URL ?>/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo SRC_URL ?>/style.css">
 </head>
 <body>
 <div class="jumbotron">

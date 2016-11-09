@@ -1,15 +1,21 @@
-<?php include 'header.php';?>
-    <article>
-    <?php if (isset($render['article'])): ?>
-        <h1><?php echo $render['article']['title']; ?></h1>
-        <div class="bar">
-            创建日期：<?php echo date('Y-m-d H:i:s', $render['article']['created']); ?>
-        </div>
-        <div class="article">
-            <?php echo nl2br($render['article']['content']); ?>
-        </div>
-    <?php else: ?>
-        文章不存在
-    <?php endif?>
-    </article>
-<?php include 'footer.php';?>
+<?php
+/**
+ * 文章内容页
+ */
+include 'boot.php';
+
+/*
+获取指定id的文章内容
+先判断是否传递了id参数$_GET['id']
+再判断数据文件是否存在
+ */
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $fileName = DATA_PATH . '/' . $id . '.php';
+    if (file_exists($fileName)) {
+        $data = file_get_contents($fileName);
+        $render['article'] = unserialize($data);
+    }
+}
+
+view($render);
