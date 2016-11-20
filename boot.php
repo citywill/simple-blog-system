@@ -12,6 +12,9 @@ define('DATA_PATH', APP_PATH . '/data');
 //定义资源（js、css、图片等）路径
 define('SRC_URL', '/src');
 
+// 启动session
+session_start();
+
 /**
  * 获取文章列表
  * @return array 返回文章列表数组，如果文章不存在则返回false
