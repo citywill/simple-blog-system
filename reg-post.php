@@ -31,6 +31,7 @@ $_SESSION['regError'] = null;
 if(isset($error)){
     $_SESSION['regError'] = $error;
     header('location:reg.php');
+    die();
 }
 
 $rs = $db->exec('
