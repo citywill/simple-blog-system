@@ -1,10 +1,11 @@
 <?php
 /**
- * 用户注册
+ * 处理用户注册
  */
 include 'boot.php';
 include 'class/Db.php';
 
+//构建数据
 $data['username'] = trim($_POST['username']);
 $data['password'] = trim($_POST['password']);
 $data['password2'] = trim($_POST['password2']);
@@ -26,14 +27,13 @@ $db = new Db;
 if($db->find('select * from users where username = "' . $data['username'] . '"'))
     $error[] = '已经有人使用该用户名，请更换一个再试';
 
-$_SESSION['regError'] = null;
-
 if(isset($error)){
     $_SESSION['regError'] = $error;
     header('location:reg.php');
     die();
 }
 
+//用户信息插入数据库库
 $rs = $db->exec('
           insert into users (username, password, created_at) values (
           "' . $data['username'] . '",
@@ -42,7 +42,5 @@ $rs = $db->exec('
           )
       ');
 
+//注册之后跳转到登录页面
 header('location:login.php');
-//$rs = $db->find('select * from users where id = 2');
-
-//var_dump($rs);

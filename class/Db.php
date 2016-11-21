@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class Db
+ */
 
 class Db
 {
@@ -14,17 +17,29 @@ class Db
         );
     }
 
+    /**
+     * @param string $sql
+     * @return int
+     */
     public function exec(string $sql)
     {
         return $this->conn->exec($sql);
     }
 
+    /**
+     * @param string $sql
+     * @return mixed
+     */
     public function find(string $sql)
     {
         $query = $this->conn->query($sql);
         return $query->fetch();
     }
 
+    /**
+     * @param string $sql
+     * @return array
+     */
     public function findAll(string $sql)
     {
         $query = $this->conn->query($sql);
