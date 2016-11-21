@@ -48,6 +48,16 @@ function getArticles()
 }
 
 /**
+ * 根据session判断用户权限
+ */
+function authAccess() {
+    if(!$_SESSION['auth']) {
+        header('location:login.php');
+        die();
+    }
+}
+
+/**
  * 视图调用函数
  * @param  array $render 程序向视图中传递的变量
  */
