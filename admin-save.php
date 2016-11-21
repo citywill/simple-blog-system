@@ -4,6 +4,9 @@
  */
 include 'boot.php';
 
+//权限控制
+authAccess();
+
 //获得表单传递过来的数据
 $data = $_POST;
 

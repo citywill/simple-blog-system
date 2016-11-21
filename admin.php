@@ -4,6 +4,9 @@
  */
 include 'boot.php';
 
+//权限控制
+authAccess();
+
 //定义菜单激活变量
 $render['active'] = 'list';
 

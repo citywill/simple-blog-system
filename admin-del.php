@@ -4,6 +4,9 @@
  */
 include 'boot.php';
 
+//权限控制
+authAccess();
+
 //判断是否有$_GET['id']
 if (isset($_GET['id'])) {
 
