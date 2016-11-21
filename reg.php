@@ -5,3 +5,5 @@
 include 'boot.php';
 
 view($render);
+
+$_SESSION['regError'] = null;
